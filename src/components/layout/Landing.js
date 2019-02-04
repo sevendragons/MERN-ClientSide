@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {PropTypes} from 'prop-types';
-import { connect } from 'react-redux'
-
+import { connect } from 'react-redux';
 
 
 class Landing extends React.Component {

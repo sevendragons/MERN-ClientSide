@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 
@@ -9,10 +9,17 @@ import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/dashboard/CreateProfile';
+import EditProfile from './components/edit-profile/EditProfile';
+import AddExperience from './components/add-credentials/AddExperience';
+
+import PrivateRoute from './components/common/PrivateRoute'
 
 import setAuthToken from './utils/setAuthToken';
 import store from './reduxLib/store/store';
 import {setCurrentUser, logOutUser} from './reduxLib/action/authActions';
+import { clearCurrentProfile  } from './reduxLib/action/profileActions';
 
 
 //Check for token keep all information register in page
@@ -32,11 +39,11 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logOutUser());
 
-    // TODO: Clear current Profile
-
+    // Clear current Profile
+    store.dispatch(clearCurrentProfile());
 
     // Redirect to login
-      window.location.href = '/login'
+    window.location.href = '/login'
 
 
   }
@@ -56,6 +63,18 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={ Register }></Route>
               <Route exact path="/Login" component={ Login }></Route>
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={ Dashboard }></PrivateRoute>
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/createProfile" component={ CreateProfile }></PrivateRoute>
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/editProfile" component={ EditProfile }></PrivateRoute>
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/addExperience" component={ AddExperience }></PrivateRoute>
+              </Switch>
             </div>
             <Footer></Footer>
           </div>
