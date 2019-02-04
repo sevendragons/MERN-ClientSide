@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { withRouter } from  'react-router-dom';
+import { withRouter, Link } from  'react-router-dom';
 
 import { Container, Row } from 'reactstrap'
 import Styled from 'styled-components';
@@ -13,7 +13,6 @@ import SelectListGroup from '../common/SelectListGroup'
 
 import {getCurrentProfile, createProfile} from '../../reduxLib/action/profileActions';
 import isEmpty from '../../validation/is-empty';
-
 
 let Container1 = Styled(Container)`
 
@@ -61,7 +60,7 @@ class CreateProfile extends React.Component {
 
     // If profile field doesnt exist, make empty string
     profile.company = !isEmpty(profile.company) ? profile.company : '';
-    profile.website = !isEmpty(profile.wbsite) ? profile.wbsite : '';
+    profile.website = !isEmpty(profile.website) ? profile.website : '';
     profile.location = !isEmpty(profile.location) ? profile.location : '';
     profile.githubUserName = !isEmpty(profile.githubUserName) ? profile.githubUserName : '';
     profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
@@ -81,7 +80,7 @@ class CreateProfile extends React.Component {
       location: profile.location,
       status: profile.status,
       skills: skillsCSV,
-      githubUserName: profile.handle,
+      githubUserName: profile.githubUserName,
       bio: profile.bio,
       twitter: profile.twitter,
       facebook: profile.facebook,
@@ -103,7 +102,7 @@ onSubmit(e) {
     location: this.state.location,
     status: this.state.status,
     skills: this.state.skills,
-    githubUserName: this.state.handle,
+    githubUserName: this.state.githubUserName,
     bio: this.state.bio,
     twitter: this.state.twitter,
     facebook: this.state.facebook,
@@ -195,10 +194,13 @@ onSubmit(e) {
         <Container1>
           <Row>
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create Your Profile</h1>
+              <h1 className="display-4 text-center">Edit or Update Your Profile</h1>
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
               </p>
+              <Link to="/dashboard" className="btn btn-light">
+                        Go back Dashboard
+              </Link>
               <small className="d-block pb-3">* required fields</small>
 
               <form onSubmit={this.onSubmit}>
@@ -254,10 +256,10 @@ onSubmit(e) {
                 />
                 <TextFieldGroup
                   placeholder="Github Username"
-                  name="githubusername"
-                  value={this.state.githubusername}
+                  name="githubUserName"
+                  value={this.state.githubUserName}
                   onChange={this.onChange}
-                  error={errors.githubusername}
+                  error={errors.githubUserName}
                   info="If you want your latest repos and a Github link, include your username"
                 />
                 <TextAreaFieldGroup
