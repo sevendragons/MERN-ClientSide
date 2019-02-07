@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Styled from 'styled-components';
-import {Container, Row, Col} from 'reactstrap'
+// import Styled from 'styled-components';
+// import {Container, Row, Col} from 'reactstrap'
 
 import { getCurrentProfile, deleteAccount } from '../../reduxLib/action/profileActions';
-import Spinner from '../common/spinner.gif';
+import Spinner from '../common/Spinner';
 
 import ProfileActions from './ProfileActions';
 import Experience from './Experience';
@@ -28,7 +28,7 @@ class Dashboard extends Component {
     let dashboardContent;
 
     if (profile === null || loading) {
-      dashboardContent = <figure><img style={{ width: '200px', margin: 'auto', display: 'block' }} src={Spinner} alt=""/></figure>;
+      dashboardContent = <Spinner />;
     } else {
       // Check if logged in user has profile data
       if (Object.keys(profile).length > 0) {

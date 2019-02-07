@@ -1,30 +1,32 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import { GET_PROFILE,
-         GET_PROFILES,
-         PROFILE_LOADING,
-         CLEAR_CURRENT_PROFILE,
-         GET_ERRORS,
-         SET_CURRENT_USER } from '../constants/action-types';
+import {
+  GET_PROFILE,
+  GET_PROFILES,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE,
+  GET_ERRORS,
+  SET_CURRENT_USER
+} from '../constants/action-types';
 
-/*------- Get current profile, also for update profile -------*/
+// Get current profile
 export const getCurrentProfile = () => dispatch => {
-  dispatch( setProfileLoading() );
-  axios.get('/api/profile')
-  .then (res =>
-    dispatch({
-      type: GET_PROFILE,
-      payload: res.data
+  dispatch(setProfileLoading());
+  axios
+    .get('/api/profile')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
       })
     )
-  .catch(err =>
-    dispatch({
-      type: GET_PROFILE,
-      payload: {}
-    })
-  );
-}
-
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: {}
+      })
+    );
+};
 
 // Get profile by handle
 export const getProfileByHandle = handle => dispatch => {
@@ -159,16 +161,16 @@ export const deleteAccount = () => dispatch => {
   }
 };
 
-/*------- Clear Profile -------*/
-export const clearCurrentProfile = () => {
-  return {
-    type: CLEAR_CURRENT_PROFILE
-  }
-}
-
-/*------- Profile loading -------*/
+// Profile loading
 export const setProfileLoading = () => {
   return {
     type: PROFILE_LOADING
-  }
-}
+  };
+};
+
+// Clear profile
+export const clearCurrentProfile = () => {
+  return {
+    type: CLEAR_CURRENT_PROFILE
+  };
+};

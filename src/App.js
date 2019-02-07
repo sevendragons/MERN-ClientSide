@@ -14,6 +14,10 @@ import CreateProfile from './components/dashboard/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-credentials/AddExperience';
 import AddEducation from './components/add-credentials/AddEducation';
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
+import NotFound from './components/not-found/NotFound';
+import Posts from './components/posts/Posts';
 
 import PrivateRoute from './components/common/PrivateRoute'
 
@@ -64,6 +68,8 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={ Register }></Route>
               <Route exact path="/Login" component={ Login }></Route>
+              <Route exact path="/profiles" component={ Profiles }></Route>
+              <Route exact path="/profile/:handle" component={ Profile }></Route>
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={ Dashboard }></PrivateRoute>
               </Switch>
@@ -79,6 +85,10 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path="/addEducation" component={ AddEducation }></PrivateRoute>
               </Switch>
+              <Switch>
+                <PrivateRoute exact path="/posts" component={ Posts }></PrivateRoute>
+              </Switch>
+              <Route exact path="/notFound" component={ NotFound }></Route>
             </div>
             <Footer></Footer>
           </div>

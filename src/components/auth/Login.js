@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import classnames from 'classnames'
+// import classnames from 'classnames'
 
 import { loginUser } from '../../reduxLib/action/authActions';
 import TextFieldGroup from '../common/TextFieldGroup'
@@ -12,8 +12,7 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      errors: {},
-      errors1:{}
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -27,9 +26,9 @@ class Login extends React.Component {
   componentDidMount() {
     if(this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
-    } else {
-      this.props.history.push('/login');
-    }
+    } // else {
+    //   this.props.history.push('/login');
+    // }
   }
   /*------- end -------*/
 
@@ -55,8 +54,8 @@ class Login extends React.Component {
   }
 
   render () {
-    const { errors } = this.state;
-
+    const { errors, email, password} = this.state;
+    // const errors1 = errors.errors;
     return(
       <div>
         <div className="login animated fadeIn">
@@ -69,16 +68,19 @@ class Login extends React.Component {
                   <TextFieldGroup placeholder="Email Address"
                     name="email"
                     type="email"
-                    value={this.state.email}
+                    value={email}
                     onChange={this.onChange}
                     error={errors.email}
+                    
+                    label="Email"
                   />
                 <TextFieldGroup placeholder="Passwoord"
                     name="password"
                     type="password"
-                    value={this.state.password}
+                    value={password}
                     onChange={this.onChange}
                     error={errors.password}
+                    label="Password"
                   />
 
 

@@ -16,6 +16,7 @@ const TextFieldGroup = ({
 }) => {
   return (
      <div className="form-group">
+                    <label htmlFor={name}>{label}</label>
                     <input type={type}
                       className= {classnames('form-control form-control-lg',
                         {'is-invalid': error}
@@ -38,6 +39,7 @@ TextFieldGroup.propTypes = {
     value: PropTypes.string.isRequired,
     info: PropTypes.string,
     error: PropTypes.string,
+    error1: PropTypes.string,
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     disabled: PropTypes.string

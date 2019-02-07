@@ -5,22 +5,19 @@ import isEmpty from '../../validation/is-empty'
 
  const initialState = {
   isAuthenticated: false,
-  user: {
-    // hello: 'hello'
-
-
-  },
+  user: {}
+    // hello: 'hello',
   // hello: 'test'
-}
+};
 
+// case TEST_DISPATCH:
+//   return {
+//     ...state,
+//     user: action.payload
+//
+//   }
  export default function (state = initialState, action){
   switch(action.type) {
-    // case TEST_DISPATCH:
-    //   return {
-    //     ...state,
-    //     user: action.payload
-    //
-    //   }
     case SET_CURRENT_USER:
       return{
         ...state,

@@ -15,7 +15,7 @@ class AddExperience extends Component {
             location: '',
             from: '',
             to: '',
-            current: '',
+            current: false,
             description: '',
             errors: {},
             disabled: false,
@@ -34,6 +34,7 @@ class AddExperience extends Component {
 
     onSubmit(e){
         e.preventDefault();
+
         const expData = {
             company: this.state.company,
             title: this.state.title,
@@ -97,6 +98,7 @@ class AddExperience extends Component {
                             value={ this.state.location }
                             onChange={ this.onChange }
                             type="text"
+                            error={errors.location}
                         />
                         <h6>From Date</h6>
                         <TextFieldGroup

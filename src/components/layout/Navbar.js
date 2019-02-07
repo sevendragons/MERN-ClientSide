@@ -30,6 +30,11 @@ class Navbar extends React.Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item" style={{display: 'flex', alignItems: 'center'}}>
+          <Link className="nav-link" to="/posts">
+            Post Feed
+          </Link>
+        </li>
+        <li className="nav-item" style={{display: 'flex', alignItems: 'center'}}>
           <Link className="nav-link" to="/dashboard">
             Dashboard
           </Link>
