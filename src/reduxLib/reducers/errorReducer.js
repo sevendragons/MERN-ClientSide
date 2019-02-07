@@ -1,4 +1,4 @@
-import {GET_ERRORS} from '../constants/action-types'
+import {GET_ERRORS, CLEAR_ERRORS} from '../constants/action-types'
 
  const initialState = {};
 
@@ -6,7 +6,8 @@ import {GET_ERRORS} from '../constants/action-types'
   switch(action.type) {
     case GET_ERRORS:
       return action.payload;
-
+    case CLEAR_ERRORS:
+      return {};
     default:
       return state;
 
